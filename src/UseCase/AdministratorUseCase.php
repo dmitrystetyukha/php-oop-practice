@@ -68,7 +68,7 @@ class AdministratorUseCase extends BaseUserUseCase
         
     }
     
-    public function sendRestorePasswordMail()
+    public function sendRestorePasswordMail(Administrator $administrator)
     {
         // TODO: Implement sendRestorePasswordMail() method for Administrator Entity.
     }

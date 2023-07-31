@@ -25,7 +25,7 @@ class OrganizerUseCase extends BaseUserUseCase
         mail(to: $customer->getEmail(), subject: $this->organizer->getEmail(), message: $message);
     }
     
-    public function sendRestorePasswordMail()
+    public function sendRestorePasswordMail(Organizer $organizer)
     {
         // TODO: Implement sendRestorePasswordMail() method for Organizer Entity.
     }
