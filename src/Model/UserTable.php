@@ -12,13 +12,13 @@ class UserTable extends Model
         'is_banned',
     ];
     
-    public function events()
-    {
-        return $this->hasMany(EventTable::class);
-    }
-    
     public function role()
     {
         return $this->hasOne(RoleTable::class);
+    }
+    
+    public function events()
+    {
+        return $this->morphedByMany(EventTable::class);
     }
 }

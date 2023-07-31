@@ -3,6 +3,7 @@
 namespace UseCase;
 
 use BanUserTrait;
+use Entity\Administrator;
 use Entity\BaseUser;
 use Entity\Event;
 use Entity\Role;
@@ -13,21 +14,11 @@ class AdministratorUseCase extends BaseUserUseCase
 {
     use BanUserTrait;
     
-    /**
-     * @param \Entity\BaseUser $user
-     * @param \Entity\Role     $role
-     * @param \Entity\Event    $event
-     * @return void
-     */
-    public function addUser(BaseUser $user, Role $role, Event $event): void
+    private Administrator $administrator;
+    
+    public function __construct(Administrator $administrator)
     {
-        $user = UserTable::create([
-            'name'  => $user->getName(),
-            'email' => $user->getEmail(),
-        ]);
-        
-        $user->events()->attach(Event::find($event->getId()));
-        $user->roles()->attach(Role::find($role->value()));
+        parent::__construct($administrator);
     }
     
     /**
@@ -51,8 +42,34 @@ class AdministratorUseCase extends BaseUserUseCase
         
     }
     
-    public function sendRestorePasswordMail(BaseUser $user)
+    /**
+     * @param \Entity\BaseUser $user
+     * @param \Entity\Role     $role
+     * @param \Entity\Event    $event
+     * @return void
+     */
+    public function addUser(
+        BaseUser $user,
+        Role $role,
+        Event|null $event = null
+    ): void {
+        $user = UserTable::create([
+            'name'  => $user->getName(),
+            'email' => $user->getEmail(),
+        ]);
+        
+        $user->roles()->attach(Role::find($role->value()));
+        
+        if ($event !== null) {
+            $user->events()->attach(Event::find($event->getId()));
+        } else {
+            $user->events()->attach($event);
+        }
+        
+    }
+    
+    public function sendRestorePasswordMail()
     {
-        // TODO: Implement sendRestorePasswordMail() method.
+        // TODO: Implement sendRestorePasswordMail() method for Administrator Entity.
     }
 }

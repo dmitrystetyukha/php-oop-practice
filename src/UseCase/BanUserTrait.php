@@ -3,9 +3,10 @@
 namespace UseCase;
 
 use Entity\BaseUser;
-use Entity\Role;
+use Entity\Customer;
 use Exception;
 use Model\UserTable;
+use RoleCheck\RoleCheck;
 
 trait BanUserTrait
 {
@@ -15,16 +16,16 @@ trait BanUserTrait
      * @return void
      * @throws \Exception
      */
-    public function banUser(BaseUser $baseUser): void
+    public function banUser(BaseUser $banRecipient): void
     {
-        if ($baseUser->getRole() !== Role::Customer) {
-            throw new Exception('Организаторы и Администраторы защищены от бана!');
+        if (!$banRecipient instanceof Customer) {
+            throw new Exception('Банить можно только простых пользователей!');
         }
         
-        $baseUser->ban();
+        $banRecipient->ban();
         
-        $user            = UserTable::find($baseUser->getId());
-        $user->is_banned = $baseUser->isBanned();
+        $user            = UserTable::find($banRecipient->getId());
+        $user->is_banned = $banRecipient->isBanned();
         $user->save();
     }
 }
