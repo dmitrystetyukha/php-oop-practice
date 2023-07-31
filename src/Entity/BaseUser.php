@@ -11,12 +11,12 @@ abstract class BaseUser
     
     private Role $role;
     
-    public function __construct(string $id, string $name, string $email)
+    public function __construct(string $id, string $name, string $email, Role $role)
     {
         $this->id    = $id;
         $this->name  = $name;
         $this->email = $email;
-        $this->role  = Role::Customer;
+        $this->role  = $role;
     }
     
     public function getId(): string

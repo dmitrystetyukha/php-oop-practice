@@ -6,7 +6,6 @@ use Entity\BaseUser;
 use Entity\Customer;
 use Exception;
 use Model\UserTable;
-use RoleCheck\RoleCheck;
 
 trait BanUserTrait
 {

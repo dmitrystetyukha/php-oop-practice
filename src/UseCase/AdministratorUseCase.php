@@ -43,9 +43,9 @@ class AdministratorUseCase extends BaseUserUseCase
     }
     
     /**
-     * @param \Entity\BaseUser $user
-     * @param \Entity\Role     $role
-     * @param \Entity\Event    $event
+     * @param \Entity\BaseUser   $user
+     * @param \Entity\Role       $role
+     * @param \Entity\Event|null $event
      * @return void
      */
     public function addUser(
