@@ -17,9 +17,9 @@ abstract class BaseUserUseCase
      * @param \Entity\BaseUser $user
      * @return string
      */
-    public function getPersonalInfo(BaseUser $user): string
+    public function getPersonalInfo(): string
     {
-        return sprintf('ID: %s, name: %s, email: %s.', $user->getId(), $user->getName(), $user->getEmail());
+        return sprintf('ID: %s, name: %s, email: %s.', $this->user->getId(), $this->user->getName(), $this->user->getEmail());
     }
     
     abstract public function sendRestorePasswordMail(BaseUser $user);

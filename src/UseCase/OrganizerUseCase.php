@@ -17,7 +17,12 @@ class OrganizerUseCase extends BaseUserUseCase
         parent::__construct($organizer);
     }
     
-    function inviteUser(Customer $customer, Event $event)
+    /**
+     * @param \Entity\Customer $customer
+     * @param \Entity\Event    $event
+     * @return void
+     */
+    function inviteUser(Customer $customer, Event $event): void
     {
         $message = sprintf('Здравствуйте, %s! Вы приглашены на мероприятие "%s"!', ucfirst($customer->getName()), ucfirst($event->getName()));
         

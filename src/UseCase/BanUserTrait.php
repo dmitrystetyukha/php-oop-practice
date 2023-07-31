@@ -11,7 +11,7 @@ trait BanUserTrait
 {
     
     /**
-     * @param \Entity\BaseUser $baseUser
+     * @param \Entity\BaseUser $banRecipient
      * @return void
      * @throws \Exception
      */
