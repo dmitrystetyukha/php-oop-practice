@@ -2,7 +2,6 @@
 
 namespace UseCase;
 
-use BanUserTrait;
 use Entity\Customer;
 use Entity\Event;
 use Entity\Organizer;

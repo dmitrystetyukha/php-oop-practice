@@ -2,7 +2,6 @@
 
 namespace UseCase;
 
-use BanUserTrait;
 use Entity\Administrator;
 use Entity\BaseUser;
 use Entity\Event;
