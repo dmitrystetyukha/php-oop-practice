@@ -1,0 +1,22 @@
+{
+    "name": "dima/php-oop-practice-webpractik",
+    "type": "project",
+    "require": {
+        "laravel/laravel": "^10.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Stetyukha",
+            "email": "s.dmitriy@webpractik.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Entity\\": "/src/Entity",
+            "Model\\": "/src/Model",
+            "Repository\\": "/src/Repository",
+            "UseCase\\": "/src/UseCase"
+        }
+    }
+}
