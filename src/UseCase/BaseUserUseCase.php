@@ -2,25 +2,43 @@
 
 namespace UseCase;
 
-use Entity\BaseUser;
+use Repository\UserRepository;
 
 abstract class BaseUserUseCase
 {
-    private BaseUser $user;
+    private UserRepository $userRepository;
     
-    public function __construct(BaseUser $user)
+    public function getUser(int $id)
     {
-        $this->user = $user;
+        $this->userRepository->getUser($id);
     }
+    
+    public function addUser()
+    {
+    }
+    
+    public function createUser()
+    {
+    }
+    
+    public function updateUser()
+    {
+    }
+    
+    public function deleteUser()
+    {
+    }
+    
     
     /**
-     * @param \Entity\BaseUser $user
+     * @param int $id
      * @return string
      */
-    public function getPersonalInfo(): string
+    public function getPersonalInfo(int $id): string
     {
-        return sprintf('ID: %s, name: %s, email: %s.', $this->user->getId(), $this->user->getName(), $this->user->getEmail());
+        $user = $this->userRepository->getUser($id);
+        return sprintf('ID: %s, name: %s, email: %s.', $user->getId(), $user->getName(), $user->getEmail());
     }
     
-    abstract public function sendRestorePasswordMail(BaseUser $user);
+    abstract public function sendRestorePasswordMail();
 }

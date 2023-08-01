@@ -2,10 +2,9 @@
 
 namespace UseCase;
 
-use Entity\Administrator;
-use Entity\BaseUser;
 use Entity\Event;
 use Entity\Role;
+use Entity\User\BaseUser;
 use Exception;
 use Model\UserTable;
 
@@ -13,15 +12,8 @@ class AdministratorUseCase extends BaseUserUseCase
 {
     use BanUserTrait;
     
-    private Administrator $administrator;
-    
-    public function __construct(Administrator $administrator)
-    {
-        parent::__construct($administrator);
-    }
-    
     /**
-     * @param \Entity\BaseUser $baseUser
+     * @param \Entity\User\BaseUser $baseUser
      * @return void
      */
     public function deleteUser(BaseUser $baseUser): void
@@ -42,9 +34,9 @@ class AdministratorUseCase extends BaseUserUseCase
     }
     
     /**
-     * @param \Entity\BaseUser   $user
-     * @param \Entity\Role       $role
-     * @param \Entity\Event|null $event
+     * @param \Entity\User\BaseUser $user
+     * @param \Entity\Role          $role
+     * @param \Entity\Event|null    $event
      * @return void
      */
     public function addUser(
@@ -67,7 +59,7 @@ class AdministratorUseCase extends BaseUserUseCase
         
     }
     
-    public function sendRestorePasswordMail(Administrator $administrator)
+    public function sendRestorePasswordMail()
     {
         // TODO: Implement sendRestorePasswordMail() method for Administrator Entity.
     }

@@ -2,17 +2,18 @@
 
 namespace Model;
 
+
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
-
-class EventTable
+class EventTable extends Model
 {
     protected $table = 'event_table';
     
-    protected $fillable = ['name'];
+    protected $fillable = ['id', 'name'];
     
-    function user()
+    function user(): MorphToMany
     {
-        return $this->morphedByMany(UserTable::class);
+        return $this->morphedByMany(UserTable::class, 'user_event');
     }
 }

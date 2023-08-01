@@ -1,22 +1,29 @@
 <?php
 
-namespace Entity;
+namespace Entity\User;
+
+use Entity\Role;
 
 abstract class BaseUser
 {
     private null|int $id;
     private string   $name;
     private string   $email;
-    private bool     $isBanned;
     
     private Role $role;
     
-    public function __construct(string $id, string $name, string $email, Role $role)
-    {
-        $this->id    = $id;
-        $this->name  = $name;
-        $this->email = $email;
-        $this->role  = $role;
+    public function __construct(
+        string $id,
+        string $name,
+        string $email,
+        Role $role,
+        bool $isBanned = false,
+    ) {
+        $this->id       = $id;
+        $this->name     = $name;
+        $this->email    = $email;
+        $this->isBanned = $isBanned;
+        $this->role     = $role;
     }
     
     public function getId(): string
