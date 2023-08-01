@@ -1,9 +1,10 @@
 <?php
 
+
 namespace UseCase;
 
-use Entity\BaseUser;
-use Entity\Customer;
+use Entity\User\BaseUser;
+use Entity\User\Customer;
 use Exception;
 use Model\UserTable;
 
@@ -11,7 +12,7 @@ trait BanUserTrait
 {
     
     /**
-     * @param \Entity\BaseUser $banRecipient
+     * @param \Entity\User\BaseUser $banRecipient
      * @return void
      * @throws \Exception
      */
