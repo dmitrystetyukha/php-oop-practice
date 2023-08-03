@@ -8,11 +8,11 @@ use Exception;
 trait BanUserTrait
 {
     /**
-     * @param int $id
+     * @param string $id
      * @return void
      * @throws \Exception
      */
-    public function banUser(int $id): void
+    public function banUser(string $id): void
     {
         $banRecipient = $this->repository->getUser($id);
 

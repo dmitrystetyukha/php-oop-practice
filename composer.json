@@ -13,11 +13,11 @@
     ],
     "autoload": {
         "psr-4": {
-            "Entity\\": "/src/Entity",
-            "Model\\": "/src/Model",
-            "Repository\\": "/src/Repository",
-            "UseCase\\": "/src/UseCase",
-            "UserCreator\\": "/src/UserCreator"
+            "Entity\\": "./src/Entity/",
+            "Model\\": "./src/Model/",
+            "Repository\\": "./src/Repository/",
+            "RoleManager\\": "./src/RoleManager/",
+            "UseCase\\": "./src/UseCase/"
         }
     }
 }

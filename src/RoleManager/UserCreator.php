@@ -1,9 +1,10 @@
 <?php
 
-namespace UserCreator;
+namespace RoleManager;
 
 use Entity\Role;
 use Entity\User\Administrator;
+use Entity\User\BaseUser;
 use Entity\User\Customer;
 use Entity\User\Organizer;
 
@@ -13,12 +14,12 @@ class UserCreator
      * Создает экземпляр такого класса-наследника BaseUser,
      * роль которого передается агрументом $role
      *
-     * @param string       $id
+     * @param string     $id
      * @param string       $name
      * @param string       $email
      * @param \Entity\Role $role
      * @param bool         $isBanned
-     * @return \Entity\User\Administrator|\Entity\User\Customer|\Entity\User\Organizer
+     * @return \Entity\User\BaseUser
      */
     public static function createUser(
         string $id,
@@ -26,7 +27,7 @@ class UserCreator
         string $email,
         Role $role,
         bool $isBanned = false,
-    ): Organizer|Administrator|Customer {
+    ): BaseUser {
         return match ($role) {
             Role::Customer => new Customer($id, $name, $email, $role, $isBanned),
             Role::Administrator => new Administrator($id, $name, $email, $role),

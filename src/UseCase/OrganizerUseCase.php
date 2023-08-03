@@ -2,8 +2,8 @@
 
 namespace UseCase;
 
-use Entity\Event;
 use Entity\User\Customer;
+use Entity\User\Organizer;
 use Repository\UserTableRepository;
 
 class OrganizerUseCase extends BaseUserUseCase
@@ -17,14 +17,14 @@ class OrganizerUseCase extends BaseUserUseCase
         parent::__construct($repository);
     }
 
-    public function inviteUser(Customer $customer, Event $event): void
+    public function inviteUser(Organizer $organizer, Customer $customer): void
     {
-        $message = sprintf('Здравствуйте, %s! Вы приглашены на мероприятие "%s"!', ucfirst($customer->getName()), ucfirst($event->getName()));
+        $message = sprintf('Здравствуйте, %s! Вы приглашены на мероприятие "%s"!', ucfirst($customer->getName()), ucfirst($organizer->getEvent()->getName()));
 
         mail(to: $customer->getEmail(), subject: $customer->getEmail(), message: $message);
     }
 
-    public function sendRestorePasswordMail()
+    public function sendRestorePasswordMail(string $id)
     {
         // TODO: Implement sendRestorePasswordMail() method for Organizer Entity.
     }

@@ -6,7 +6,7 @@ use Entity\Role;
 
 abstract class BaseUser
 {
-    private null|int $id;
+    private null|string $id;
     private string $name;
     private string $email;
 

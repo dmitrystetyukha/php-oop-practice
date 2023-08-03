@@ -8,15 +8,15 @@ use Exception;
 use Model\BannedUserTable;
 use Model\RoleTable;
 use Model\UserTable;
-use UserCreator\UserCreator;
+use RoleManager\UserCreator;
 
 class UserTableRepository extends BaseUserRepository
 {
     /**
-     * @param int $id
+     * @param string $id
      * @return \Entity\User\BaseUser
      */
-    public function getUser(int $id): BaseUser
+    public function getUser(string $id): BaseUser
     {
         $user = UserTable::where('id', $id)->get();
 
@@ -52,7 +52,7 @@ class UserTableRepository extends BaseUserRepository
         $user->role()->attach(RoleTable::where('name', $newUser->getRole()->value));
     }
 
-    public function updateUser(int $id, BaseUser $newUser): void
+    public function updateUser(string $id, BaseUser $newUser): void
     {
         $user = UserTable::where('id', $id);
         $user->beginTransaction();
@@ -70,7 +70,7 @@ class UserTableRepository extends BaseUserRepository
         }
     }
 
-    public function deleteUser(int $id): void
+    public function deleteUser(string $id): void
     {
         $user = UserTable::where('id', $id);
         $user->beginTransaction();
@@ -86,7 +86,7 @@ class UserTableRepository extends BaseUserRepository
         }
     }
 
-    public function banUser(int $id): void
+    public function banUser(string $id): void
     {
         $bannedUser = BannedUserTable::create();
         $bannedUser->users()->attach(UserTable::where('id', $id));
