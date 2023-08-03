@@ -4,10 +4,9 @@ namespace Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 class RoleTable extends Model
 {
-    protected $table = 'role_table';
-    
-    protected $fillable = ['id', 'name'];
+    protected $table = 'roles';
+
+    protected $fillable = ['name'];
 }

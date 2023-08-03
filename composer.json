@@ -16,7 +16,8 @@
             "Entity\\": "/src/Entity",
             "Model\\": "/src/Model",
             "Repository\\": "/src/Repository",
-            "UseCase\\": "/src/UseCase"
+            "UseCase\\": "/src/UseCase",
+            "UserCreator\\": "/src/UserCreator"
         }
     }
 }

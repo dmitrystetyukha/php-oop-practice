@@ -6,10 +6,19 @@ use Entity\Role;
 
 class Customer extends BaseUser
 {
-    private bool $isBanned = false;
+    private bool $isBanned;
 
-    public function __construct(string $id, string $name, string $email)
+    public function __construct(string $id, string $name, string $email, Role $role, bool $isBanned)
     {
-        parent::__construct($id, $name, $email, Role::Customer);
+        $this->isBanned = $isBanned;
+        parent::__construct($id, $name, $email, $role);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isBanned(): bool
+    {
+        return $this->isBanned;
     }
 }

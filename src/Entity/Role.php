@@ -2,11 +2,14 @@
 
 namespace Entity;
 
-enum Role: int
+/**
+ * @method static find($value)
+ */
+enum Role: string
 {
-    case Customer = 0;
-    
-    case Administrator = 1;
-    
-    case Organizer = 2;
+    case Customer = 'customer';
+
+    case Administrator = 'administrator';
+
+    case Organizer = 'organizer';
 }

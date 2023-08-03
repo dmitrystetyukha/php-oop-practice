@@ -3,28 +3,23 @@
 namespace UseCase;
 
 use Entity\Role;
-use Entity\User\BaseUser;
 use Exception;
-use Model\UserTable;
 
 trait BanUserTrait
 {
-    
     /**
-     * @param \Entity\User\BaseUser $banRecipient
+     * @param int $id
      * @return void
      * @throws \Exception
      */
-    public function banUser(BaseUser $banRecipient): void
+    public function banUser(int $id): void
     {
+        $banRecipient = $this->repository->getUser($id);
+
         if ($banRecipient->getRole() !== Role::Customer) {
             throw new Exception('Банить можно только простых пользователей!');
         }
-        
-        $banRecipient->ban();
-        
-        $user            = UserTable::find($banRecipient->getId());
-        $user->is_banned = $banRecipient->isBanned();
-        $user->save();
+
+        $this->repository->banUser($id);
     }
 }

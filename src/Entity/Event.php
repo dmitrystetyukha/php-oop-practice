@@ -4,15 +4,15 @@ namespace Entity;
 
 class Event
 {
-    private int    $id;
+    private int $id;
     private string $name;
-    
+
     public function __construct(int $id, string $name)
     {
         $this->id   = $id;
         $this->name = $name;
     }
-    
+
     /**
      * @return int
      */
@@ -20,7 +20,7 @@ class Event
     {
         return $this->id;
     }
-    
+
     /**
      * @return string
      */
