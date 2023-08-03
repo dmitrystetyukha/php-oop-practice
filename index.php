@@ -1,9 +1,9 @@
 <?php
 
-require_once __DIR__ . '/src/header.html';
+require_once 'src/header.html';
 
 require_once 'vendor/autoload.php';
 
-require_once __DIR__ . '/src/template.php';
+require_once 'src/template.php';
 
-require_once __DIR__ . '/src/footer.html';
+require_once 'src/footer.html';

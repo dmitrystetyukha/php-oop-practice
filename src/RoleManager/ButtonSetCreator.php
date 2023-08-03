@@ -19,7 +19,7 @@ class ButtonSetCreator
 
         foreach ($methods as $method) {
             if ($method->name !== '__construct') {
-                $buttons[] = ucfirst($method->name) . '-button';
+                $buttons[] = sprintf("<button>%s-button</button>", ucfirst($method->name));
             }
         }
 

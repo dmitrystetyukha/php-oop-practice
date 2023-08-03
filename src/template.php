@@ -20,7 +20,7 @@ $usecase = UseCaseCreator::createUseCase($user, $repository);
 try {
     $buttonset = ButtonSetCreator::createButtonSet($usecase);
     foreach ($buttonset as $button) {
-        echo sprintf('<button type="button">%s</button>', $button) . PHP_EOL;
+        echo $button . PHP_EOL;
     }
 } catch (ReflectionException $e) {
     echo sprintf('<h1>%s<h1>', $e->getMessage()) . PHP_EOL;
