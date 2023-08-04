@@ -26,10 +26,9 @@ class UserCreator
         string $name,
         string $email,
         Role $role,
-        bool $isBanned = false,
     ): BaseUser {
         return match ($role) {
-            Role::Customer => new Customer($id, $name, $email, $role, $isBanned),
+            Role::Customer => new Customer($id, $name, $email, $role),
             Role::Administrator => new Administrator($id, $name, $email, $role),
             Role::Organizer => new Organizer($id, $name, $email, $role)
         };

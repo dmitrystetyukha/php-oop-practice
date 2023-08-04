@@ -8,11 +8,14 @@ class Customer extends BaseUser
 {
     private bool $isBanned;
 
-    public function __construct(string $id, string $name, string $email, Role $role, bool $isBanned)
+    public function __construct(string $id, string $name, string $email, Role $role)
     {
-        $this->isBanned = $isBanned;
         parent::__construct($id, $name, $email, $role);
     }
+
+    /**
+     * @return bool
+     */
 
     /**
      * @return bool
@@ -20,5 +23,13 @@ class Customer extends BaseUser
     public function isBanned(): bool
     {
         return $this->isBanned;
+    }
+
+    /**
+     * @param bool $isBanned
+     */
+    public function setIsBanned(bool $isBanned): void
+    {
+        $this->isBanned = $isBanned;
     }
 }

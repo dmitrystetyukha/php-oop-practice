@@ -18,22 +18,27 @@ class UserTableRepository extends BaseUserRepository
      */
     public function getUser(string $id): BaseUser
     {
-        $user = UserTable::where('id', $id)->get();
+        $storedUser = UserTable::where('id', $id)->get();
 
-        $bannedUser = BannedUserTable::where('user_id', $id)->get();
+        $storedUserRole = Role::from($storedUser->role()->name);
 
-        $isBanned = false;
-        if (!is_null($bannedUser)) {
-            $isBanned = true;
+        if ($storedUserRole === Role::Customer) {
+            $bannedStoredUser = BannedUserTable::where('user_id', $id)->get();
         }
 
-        return UserCreator::createUser(
-            $user->id,
-            $user->name,
-            $user->email,
-            Role::from($user->role()->name),
-            $isBanned,
+        $user = UserCreator::createUser(
+            $storedUser->id,
+            $storedUser->name,
+            $storedUser->email,
+            $storedUserRole
         );
+
+        if (isset($bannedStoredUser)) {
+            $user->setIsBanned(true);
+        }
+
+
+        return $user;
     }
 
     /**
