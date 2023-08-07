@@ -14,6 +14,7 @@
     "autoload": {
         "psr-4": {
             "Entity\\": "./src/Entity/",
+            "Entity\\User\\": "./src/Entity/User",
             "Model\\": "./src/Model/",
             "Repository\\": "./src/Repository/",
             "RoleManager\\": "./src/RoleManager/",

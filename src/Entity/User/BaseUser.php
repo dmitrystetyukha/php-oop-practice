@@ -10,18 +10,14 @@ abstract class BaseUser
     private string $name;
     private string $email;
 
-    private Role $role;
-
     public function __construct(
         string $id,
         string $name,
         string $email,
-        Role $role,
     ) {
-        $this->id       = $id;
-        $this->name     = $name;
-        $this->email    = $email;
-        $this->role     = $role;
+        $this->id    = $id;
+        $this->name  = $name;
+        $this->email = $email;
     }
 
     public function getId(): string
@@ -46,4 +42,11 @@ abstract class BaseUser
     {
         return $this->role;
     }
+
+    public function getPersonalInfo(): string
+    {
+        return sprintf('ID: %s, name: %s, email: %s.', $this->getId(), $this->getName(), $this->getEmail());
+    }
+
+    abstract public function sendRestorePasswordMail(string $id);
 }

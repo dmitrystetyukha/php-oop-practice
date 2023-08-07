@@ -1,6 +1,6 @@
 <?php
 
-namespace UseCase;
+namespace Entity\User;
 
 use Entity\Role;
 use Exception;
