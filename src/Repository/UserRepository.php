@@ -8,15 +8,15 @@ use Exception;
 use Model\BannedUserTable;
 use Model\RoleTable;
 use Model\UserTable;
-use RoleManager\UserCreator;
+use RoleManager\UserFactory;
 
-class UserTableRepository extends BaseUserRepository
+class UserRepository extends BaseRepository
 {
     /**
      * @param string $id
      * @return \Entity\User\BaseUser
      */
-    public function getUser(string $id): BaseUser
+    public function get(string $id): BaseUser
     {
         $storedUser = UserTable::where('id', $id)->get();
 
@@ -26,7 +26,7 @@ class UserTableRepository extends BaseUserRepository
             $bannedStoredUser = BannedUserTable::where('user_id', $id)->get();
         }
 
-        $user = UserCreator::createUser(
+        $user = UserFactory::createUser(
             $storedUser->id,
             $storedUser->name,
             $storedUser->email,
@@ -37,17 +37,16 @@ class UserTableRepository extends BaseUserRepository
             $user->setIsBanned(true);
         }
 
-
         return $user;
     }
 
+
     /**
      * Создает новую запись пользователя в БД
-     *
      * @param \Entity\User\BaseUser $newUser
      * @return void
      */
-    public function addUser(BaseUser $newUser): void
+    public function save(BaseUser $newUser): void
     {
         $user = UserTable::create([
             'name'  => $newUser->getName(),
@@ -57,7 +56,13 @@ class UserTableRepository extends BaseUserRepository
         $user->role()->attach(RoleTable::where('name', $newUser->getRole()->value));
     }
 
-    public function updateUser(string $id, BaseUser $newUser): void
+    /**
+     * Обновляет запись пользователя в БД
+     * @param string                $id
+     * @param \Entity\User\BaseUser $newUser
+     * @return void
+     */
+    public function update(string $id, BaseUser $newUser): void
     {
         $user = UserTable::where('id', $id);
         $user->beginTransaction();
@@ -75,7 +80,11 @@ class UserTableRepository extends BaseUserRepository
         }
     }
 
-    public function deleteUser(string $id): void
+    /**
+     * @param string $id
+     * @return void
+     */
+    public function delete(string $id): void
     {
         $user = UserTable::where('id', $id);
         $user->beginTransaction();
@@ -91,7 +100,11 @@ class UserTableRepository extends BaseUserRepository
         }
     }
 
-    public function banUser(string $id): void
+    /**
+     * @param string $id
+     * @return void
+     */
+    public function ban(string $id): void
     {
         $bannedUser = BannedUserTable::create();
         $bannedUser->users()->attach(UserTable::where('id', $id));

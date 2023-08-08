@@ -8,11 +8,11 @@ use Entity\User\BaseUser;
 use Entity\User\Customer;
 use Entity\User\Organizer;
 
-class UserCreator
+class UserFactory
 {
     /**
      * Создает экземпляр такого класса-наследника BaseUser,
-     * роль которого передается агрументом $role.
+     * роль которого передается аргументом $role.
      *
      * @param string       $id
      * @param string       $name

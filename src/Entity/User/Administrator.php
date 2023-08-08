@@ -2,6 +2,9 @@
 
 namespace Entity\User;
 
+use Controller\UserController;
+use Repository\UserRepository;
+
 class Administrator extends BaseUser
 {
     use BanUserTrait;
@@ -13,12 +16,12 @@ class Administrator extends BaseUser
      */
     public function addUser(BaseUser $user): void
     {
-        $this->repository->addUser($user);
+        UserController::addUser($user);
     }
 
     public function deleteUser(string $id): void
     {
-        $this->repository->deleteUser($id);
+        UserController::deleteUser($id);
     }
 
     public function sendRestorePasswordMail(string $id)

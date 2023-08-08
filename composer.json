@@ -18,7 +18,8 @@
             "Model\\": "./src/Model/",
             "Repository\\": "./src/Repository/",
             "RoleManager\\": "./src/RoleManager/",
-            "UseCase\\": "./src/UseCase/"
+            "View\\": "./src/View/",
+            "Controller\\": "./src/Controller/"
         }
     }
 }

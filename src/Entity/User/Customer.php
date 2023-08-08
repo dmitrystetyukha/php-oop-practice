@@ -8,10 +8,6 @@ class Customer extends BaseUser
 {
     private bool $isBanned;
 
-    public function __construct(string $id, string $name, string $email, Role $role)
-    {
-        parent::__construct($id, $name, $email, $role);
-    }
 
     public function isBanned(): bool
     {

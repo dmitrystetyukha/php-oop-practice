@@ -2,12 +2,11 @@
 
 namespace Entity\User;
 
+use Entity\BaseEntity;
 use Entity\Role;
 
-abstract class BaseUser
+abstract class BaseUser extends BaseEntity
 {
-    private null|string $id;
-    private string $name;
     private string $email;
 
     public function __construct(
@@ -15,32 +14,14 @@ abstract class BaseUser
         string $name,
         string $email,
     ) {
-        $this->id    = $id;
-        $this->name  = $name;
+        parent::__construct($id, $name);
         $this->email = $email;
     }
 
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
 
     public function getEmail(): string
     {
         return $this->email;
-    }
-
-    /**
-     * @return \Entity\Role
-     */
-    public function getRole(): Role
-    {
-        return $this->role;
     }
 
     public function getPersonalInfo(): string
