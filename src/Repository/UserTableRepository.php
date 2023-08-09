@@ -10,7 +10,7 @@ use Model\RoleTable;
 use Model\UserTable;
 use RoleManager\UserFactory;
 
-class UserRepository extends BaseRepository
+class UserTableRepository extends BaseUserRepository
 {
     /**
      * @param string $id

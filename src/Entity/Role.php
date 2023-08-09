@@ -8,8 +8,6 @@ namespace Entity;
 enum Role: string
 {
     case Customer = 'customer';
-
     case Administrator = 'administrator';
-
     case Organizer = 'organizer';
 }

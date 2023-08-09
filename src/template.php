@@ -2,17 +2,16 @@
 
 use Controller\UserController;
 use Entity\Role;
-use Repository\UserRepository;
-use View\ButtonSet;
+use Repository\UserTableRepository;
 
-$repository = UserRepository::getInstance();
+$repository = UserTableRepository::getInstance();
 
 $userController = new UserController($repository);
 
-$adminIvan    = $userController->createUser("001", "Ivan", "ivan@webpractik.ru", Role::Administrator);
-$customerOleg = $userController->createUser("002", "Oleg", "oleg@webpractik.ru", Role::Customer);
+$adminIvan    = $userController->create("001", "Ivan", "ivan@webpractik.ru", Role::Administrator);
+$customerOleg = $userController->create("002", "Oleg", "oleg@webpractik.ru", Role::Customer);
 
-foreach (ButtonSet::createButtonSet($adminIvan) as $button) {
+foreach ($userController->getButtonSet($adminIvan) as $button) {
     echo $button . PHP_EOL;
 }
 

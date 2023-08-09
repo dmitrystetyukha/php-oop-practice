@@ -3,7 +3,7 @@
 namespace Entity\User;
 
 use Controller\UserController;
-use Repository\UserRepository;
+use Repository\UserTableRepository;
 
 class Administrator extends BaseUser
 {
