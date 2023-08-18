@@ -31,6 +31,7 @@ abstract class BaseUserRepository
 
     abstract public function update(string $id, BaseUser $newUser);
 
-
+    abstract public function ban(string $id);
+    
     abstract public function delete(string $id);
 }
